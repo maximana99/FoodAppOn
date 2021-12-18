@@ -6,7 +6,7 @@ import {
 
 import { FONTS } from "../constants";
 
-export const Header = ({ containerStyle, title}) => {
+export const Header = ({ containerStyle, title, leftComponent, rightComponent}) => {
     return (
         <View 
             style={{
@@ -15,6 +15,7 @@ export const Header = ({ containerStyle, title}) => {
             }}
         >
             {/* Left */}
+            {leftComponent}
 
             {/* Title */}
             <View 
@@ -31,6 +32,7 @@ export const Header = ({ containerStyle, title}) => {
             </View>
 
             {/* Right */}
+            {rightComponent}
         </View>
     )
 }
