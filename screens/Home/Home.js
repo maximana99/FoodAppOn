@@ -178,66 +178,8 @@ const Home = () => {
         )
     }
 
-    function renderRecommendedSection() {
-        return (
-            <Section 
-            title="Recommended"
-            onPress={() => console.log("Show all recommended")} >
+   
 
-                <FlatList 
-                    data={recommends}
-                    keyExtractor={item => `${item.id}`}
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                    renderItem={({item, index}) => (
-                        <HorizontalFoodCard 
-                            containerStyle={{
-                                height: 180,
-                                width: SIZES.width * 0.85,
-                                marginLeft: index == 0 ? SIZES.
-                                padding : 18,
-                                marginRight: index == recommends.
-                                length - 1 ? SIZES.padding : 0, 
-                                paddingRight: SIZES.radius,
-                                alignItems: 'center'
-                            }}
-                            imageStyle={{
-                                marginTop: 35,
-                                height: 150,
-                                width: 150
-                            }}
-                            item={item}
-                            onPress={() => console.log("HorizontalFoodCard")}
-                        />
-                    )}
-                    
-                />
-
-            </Section>
-        )
-    }
-
-    function renderPopularSection() {
-        return (
-            <Section 
-                title="Popular Near you"
-                onPress={() => console.log("Show all popular items")}
-                >
-                <FlatList 
-                    data={popular}
-                    keyExtractor={item => `${item.id}`}
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                    renderItem={({ item, index }) => (
-                        <Text>
-                            {item.name}
-                        </Text>
-                    )}
-                
-                />
-                </Section>
-        )
-    }
 
     return (
         <View
@@ -290,10 +232,7 @@ const Home = () => {
                 showsVerticalScrollIndicator={true}
                 ListHeaderComponent={
                     <View>
-                        {/*Popular section min 1:28:55 */}
-                        {renderPopularSection()}
-                        {/*Recommended*/}
-                        {renderRecommendedSection()}
+                        
                         {/*Menu Type*/}
                         {renderMenuTypes()}
                     </View>

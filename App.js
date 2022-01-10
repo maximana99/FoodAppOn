@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import CustomDrawer from './navigation/CustomDrawer';
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from '@react-navigation/native';
+import { Login } from './screens/Authentication/Login';
 
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -30,7 +31,13 @@ const App = () =>{
       >
         <Stack.Screen
               name="Home"
-              component={CustomDrawer}
+              component={Login}//in loc de customDrower plus import
+              
+        />
+        <Stack.Screen
+              name="Layout"
+              component={CustomDrawer}//in loc de customDrower plus import
+              
         />
       </Stack.Navigator>
     </NavigationContainer>
