@@ -71,7 +71,7 @@ const menu = [
         id: 1,
         name: "Featured",
         list: [
-            hamburger, hotTacos, hamburger, hamburger
+            hamburger, hotTacos, vegBiryani
         ]
     },
     {

@@ -87,6 +87,43 @@ const Home = () => {
         )
     }
 
+
+    function renderMenuTypes() {
+        return (
+            <FlatList
+                horizontal
+                data={dummyData.menu}
+                keyExtractor={item => `${item.id}`}
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={{
+                    marginTop:30,
+                    marginBottom: 20
+                }}
+                renderItem={({item, index }) => (
+                    <TouchableOpacity
+                        style={{
+                            marginLeft: SIZES.padding,
+                            marginRight: index == dummyData.menu.length - 1 ? SIZES.padding :0 
+                        }}
+                        onPress={() => {
+                            setSelectedMenuType(item.id)
+                            handleChangeCategory
+                            (selectedCategoryId, item.id)
+                        }}
+                    >
+                        <Text
+                            style={{
+                                color: selectedMenuType == item.id ? COLORS.primary : COLORS.black,
+                                ...FONTS.h3
+                            }}>
+                            {item.name}
+                        </Text>
+                    </TouchableOpacity>
+                )}
+            />
+        )
+    }
+
     return (
         <View
             style={{
@@ -97,7 +134,7 @@ const Home = () => {
             {renderSearch()}
 
             {/*List*/}
-            <ScrollView 
+            {/* <ScrollView 
                 style={{
                     flex:1,
                     zIndex: 1                }}
@@ -124,11 +161,16 @@ const Home = () => {
                 
                 /> )
                 }
-            </ScrollView>
-            {/* <FlatList 
+            </ScrollView> */}
+            <FlatList 
                 data={menuList}
                 keyExtractor={(item) => `${item.id}`}
                 showsVerticalScrollIndicator={true}
+                ListHeaderComponent={
+                    <View>
+                        {renderMenuTypes()}
+                    </View>
+                }
                 renderItem={({item, index}) => {
                     return (
                         <HorizontalFoodCard
@@ -151,7 +193,7 @@ const Home = () => {
                         />
                     )
                 }}
-            /> */}
+            /> 
 
 
         </View>
