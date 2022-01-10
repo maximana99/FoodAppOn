@@ -12,7 +12,8 @@ import {
 } from 'react-native';
 
 import {
-    IconButton
+    IconButton,
+    TwoPointSlider
 } from "../../components"
 
 import { SIZES, COLORS, FONTS, icons} from "../../constants";
@@ -65,6 +66,20 @@ const FilterModal = ({ isVisible, onClose}) => {
             <Section
                 title="Distance"    
             >
+                <View
+                    style={{
+                        alignItems: 'center'
+                    }}
+                >
+                    <TwoPointSlider
+                        values={[3,10]}
+                        min={1}
+                        max={20}
+                        postfix="km"
+                        onValuesChange={(values) => console.log(values)}
+                    />
+
+                </View>
 
             </Section>
         )
