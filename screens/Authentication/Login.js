@@ -119,7 +119,7 @@ export function Login({navigation}) {
                         labelStyle={{
                             color: COLORS.white
                         }}
-                        onPress={() => navigation.replace("SignIn")}
+                        onPress={() => navigation.replace("Layout")}
                     />
                      <TextButton
                         label="Next"

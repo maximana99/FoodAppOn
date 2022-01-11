@@ -6,7 +6,7 @@ import {
     TextButton,
     FormInput
 } from "../../components";
-
+import { utils } from "../../utils";
 
 import { AuthLayout } from '../';
 //{navigation}
@@ -37,6 +37,7 @@ const SignIn = () => {
         //                     />
         //     </View>
             <AuthLayout
+            
             title="Let's Sign You In"
             subtitle="Welcome back!">
 
@@ -53,6 +54,7 @@ const SignIn = () => {
                     autoCompleteType="email"
                     onChange={(value) => {
                         // validate email
+                        utils.validateEmail(value, setEmailError)
                         setEmail(value)
                     }}
                     errorMsg={emailError}
@@ -63,11 +65,11 @@ const SignIn = () => {
                             }}
                         >
                             <Image
-                                source={icons.correct}
+                                source={email == "" || (email != "" && emailError == "" ) ? icons.correct : icons.cancel}
                                 style={{
                                     height:20,
                                     width: 20,
-                                    tintColor: COLORS.green
+                                    tintColor: email == "" ? COLORS.green : (email != "" && emailError == "") ? COLORS.green : COLORS.red
                                 }}
                             />
 
@@ -112,6 +114,8 @@ const SignIn = () => {
             </View>
                
             </AuthLayout>
+
+            
     )
 }
 
