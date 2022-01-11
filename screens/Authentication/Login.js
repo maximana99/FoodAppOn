@@ -2,11 +2,14 @@ import React from 'react';
 import { Text, View, TouchableOpacity, ImageBackground, Image, Animated } from "react-native";
 import { SIZES, COLORS, FONTS, icons, constants, images} from "../../constants";
 import {
-    IconButton
+    IconButton,
+    TextButton
 } from "../../components"
 export function Login({navigation}) {
 
     const scrollX = new Animated.Value(0)
+    const flatListRef = React.useRef()
+    const [currentIndex, setCurrentIndex] = React.useState(0)
 
     const Dots = () => {
         const dotPosition = Animated.divide(scrollX, SIZES.width)
@@ -92,6 +95,51 @@ export function Login({navigation}) {
                 </View>
 
                 {/* Bottons */}
+
+                <View
+                    style={{
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        paddingHorizontal: SIZES.padding,
+                        marginVertical: SIZES.padding
+                    }}
+                >
+                    <TextButton
+                        label="Skip"
+                        buttonContainerStyle={{
+                            backgroungColor : null,
+                            height: 30,
+                            width: 100,
+                            borderRadius: SIZES.radius
+                        }}
+                        labelStyle={{
+                            color: COLORS.white
+                        }}
+                        onPress={() => navigation.replace("SignIn")}
+                    />
+                     <TextButton
+                        label="Next"
+                        buttonContainerStyle={{
+                            height: 60,
+                            width: 200,
+                            borderRadius: SIZES.radius
+                        }}
+                        onPress={() => {
+                            let index = Math.ceil(Number(scrollX._value / SIZES.width))
+
+                            if (index < constants.onboarding_screens.length -1) {
+                                //scroll to the next item
+                                flatListRef?.current?.scrollToIndex({
+                                    index: index +1,
+                                    animated: true
+                                })
+                            } else {
+                                navigation.replace("SignIn")
+                            }
+                        }}
+                    />
+
+                </View>
                 
             </View>
         )
@@ -127,6 +175,7 @@ export function Login({navigation}) {
            {renderHeaderLogo()}
 
             <Animated.FlatList 
+                ref={flatListRef}
                 horizontal
                 pagingEnabled
                 data={constants.onboarding_screens}

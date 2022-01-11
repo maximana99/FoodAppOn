@@ -10,6 +10,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import rootReducer from './stores/rootReducer';
+import { SignIn } from './screens';
 
 
 
@@ -39,6 +40,10 @@ const App = () =>{
               name="Layout"
               component={CustomDrawer}//in loc de customDrower plus import
               
+        />
+        <Stack.Screen
+            name="SignIn"
+            component={SignIn}
         />
       </Stack.Navigator>
     </NavigationContainer>
