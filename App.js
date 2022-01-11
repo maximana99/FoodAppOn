@@ -12,6 +12,7 @@ import thunk from 'redux-thunk';
 import rootReducer from './stores/rootReducer';
 
 
+
 const Stack = createStackNavigator();
 
 const store = createStore(
