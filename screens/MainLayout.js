@@ -224,7 +224,7 @@ const MainLayout = ({drawerAnimationStyle, navigation, selectedTab, setSelectedT
             })
 
             favouriteTabFlex.value = withTiming(4, {duration: 500})
-            favouriteTabColor.value = withTiming(COLORS.green, {duration: 500})
+            favouriteTabColor.value = withTiming(COLORS.primary, {duration: 500})
         } else {
             favouriteTabFlex.value = withTiming(1, {duration: 500})
             favouriteTabColor.value = withTiming(COLORS.white, {duration: 500})

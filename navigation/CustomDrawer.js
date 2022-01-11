@@ -40,14 +40,14 @@ const CustomDrawerItem = ({label, icon, isFocused, onPress}) => {
             style={{
                 width: 20,
                 height:20,
-                tintColor: 'green'
+                tintColor: 'orange'
             }}
             />
 
             <Text
             style={{
                 marginLeft: 15,
-                color: 'green',
+                color: 'orange',
                 ...FONTS.h3
             }}>
                 {label}
@@ -88,7 +88,7 @@ const CustomDrawerContent = ({navigation, selectedTab, setSelectedTab}) => {
                             style={{
                                 height: 35,
                                 width: 35,
-                                tintColor: 'green'
+                                tintColor: 'orange'
                             }}
                         />
 
@@ -118,8 +118,8 @@ const CustomDrawerContent = ({navigation, selectedTab, setSelectedTab}) => {
                             marginLeft: SIZES.radius
                         }}
                     >
-                        <Text style={{ color: COLORS.green, ...FONTS.h3}}>{dummyData.myProfile?.name}</Text>
-                        <Text style={{ color: COLORS.green, ...FONTS.body4}}>View your profile</Text>
+                        <Text style={{ color: COLORS.primary, ...FONTS.h3}}>{dummyData.myProfile?.name}</Text>
+                        <Text style={{ color: COLORS.primary, ...FONTS.body4}}>View your profile</Text>
  
                     </View>
 
@@ -168,7 +168,7 @@ const CustomDrawerContent = ({navigation, selectedTab, setSelectedTab}) => {
                             height: 1,
                             marginVertical: SIZES.radius,
                             marginLeft: SIZES.radius,
-                            backgroundColor: COLORS.green 
+                            backgroundColor: COLORS.primary
                         }}
                     />
 
