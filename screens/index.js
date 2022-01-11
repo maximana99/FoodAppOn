@@ -20,6 +20,8 @@ import { Login } from "./Authentication/Login";
 
 import SignIn from "./Sign/SignIn";
 
+import AuthLayout from "./Sign/AuthLayout";
+
 export {
     MainLayout,
     Home,
@@ -29,5 +31,7 @@ export {
     Favourite,
     Notification,
     Login,
-    SignIn
+    AuthLayout,
+    SignIn,
+    
 }

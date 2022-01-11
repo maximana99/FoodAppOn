@@ -7,9 +7,13 @@ import {
 } from "../../components"
 export function Login({navigation}) {
 
-    const scrollX = new Animated.Value(0)
+    const scrollX = React.useRef(new Animated.Value(0)).current;
     const flatListRef = React.useRef()
     const [currentIndex, setCurrentIndex] = React.useState(0)
+
+    const onViewChangeRef = React.useRef(({ viewableItems, changed}) => {
+        setCurrentIndex(viewableItems[0].index)
+    })
 
     const Dots = () => {
         const dotPosition = Animated.divide(scrollX, SIZES.width)
@@ -95,7 +99,7 @@ export function Login({navigation}) {
                 </View>
 
                 {/* Bottons */}
-
+                    
                 <View
                     style={{
                         flexDirection: 'row',
@@ -189,6 +193,7 @@ export function Login({navigation}) {
                     ],
                     {useNativeDriver: false}
                 )}
+                onViewableItemsChanged={onViewChangeRef.current}
                 keyExtractor={(item) => `${item.id}`}
                 renderItem={({ item, index}) => {
                     return (
