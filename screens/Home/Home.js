@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     View,
     Text,
@@ -6,7 +6,8 @@ import {
     Image,
     TextInput,
     FlatList,
-    ScrollView
+    ScrollView,
+    ActivityIndicator
 } from 'react-native';
 
 import { FilterModal } from "../";
@@ -64,11 +65,54 @@ const Home = () => {
 
     const [showFilterModal, setShownFilterModal] = React.useState(false)
 
+    const [loading, setLoading] = useState(false);
 
-    React.useEffect(() => {
-        handleChangeCategory(selectedCategoryId, selectedMenuType)
-    }, [])
+    const [menuFirebase, setMenuFirebase] = useState([]);
+
+
+
+
+    // React.useEffect(() => {
+    //     handleChangeCategory(selectedCategoryId, selectedMenuType)
+    // }, [])
     // handler
+
+    useEffect(() => {
+        async function getData() {
+          const response = await fetch(
+            "https://foodappon-default-rtdb.firebaseio.com/menus.json"
+          );
+          const data = await response.json();
+          let menuList = [];
+          for (const currentMenu in data) {
+            let foodList = [];
+            for (const food in data[currentMenu].list) {
+              foodList.push({
+                id: data[currentMenu].list[food].id,
+                name: data[currentMenu].list[food].name,
+                description: data[currentMenu].list[food].description,
+                price: data[currentMenu].list[food].price,
+                calories: data[currentMenu].list[food].calories,
+              });
+            }
+            menuList.push({
+              currentMenu: {
+                id: data[currentMenu].id,
+                list: foodList,
+              },
+            });
+          }
+          setLoading(true);
+          setMenuFirebase(menuList);
+        }
+        getData();
+        handleChangeCategory(selectedCategoryId, selectedMenuType);
+      }, []);
+    
+      useEffect(() => {
+        let selectedMenu = menuFirebase.find((a) => a.currentMenu.id == 1);
+        setMenuList(selectedMenu?.currentMenu.list);
+      }, [menuFirebase]);
 
     function handleChangeCategory(categoryId, menuTypeId) {
 
@@ -79,7 +123,9 @@ const Home = () => {
         let selectedRecommend = dummyData.menu.find(a => a.name == "Recommended")
 
         //find the menu based on the menuTypeId
-        let selectedMenu = dummyData.menu.find(a => a.id == menuTypeId)
+        //let selectedMenu = dummyData.menu.find(a => a.id == menuTypeId)
+        let selectedMenu = menuFirebase.find((a) => a.currentMenu.id == menuTypeId);
+
 
         //set the popular menu
         setPopular(selectedRecommend?.list.filter(a => a.categories.includes(categoryId)))
@@ -88,7 +134,8 @@ const Home = () => {
         setRecommends(selectedRecommend?.list.filter(a => a.categories.includes(categoryId)))
 
         //set the menu based on the categoryId
-        setMenuList(selectedMenu?.list.filter(a => a.categories.includes(categoryId)))
+        //setMenuList(selectedMenu?.list.filter(a => a.categories.includes(categoryId)))
+        setMenuList(selectedMenu?.currentMenu.list);
 
     }
 
@@ -188,7 +235,9 @@ const Home = () => {
             }}
         >
             {/*Search */}
-            {renderSearch()}
+            {/* {renderSearch()} */}
+            {loading && renderSearch()}
+
             {/*Filter*/}
             {showFilterModal &&
             <FilterModal 
@@ -235,6 +284,14 @@ const Home = () => {
                         
                         {/*Menu Type*/}
                         {renderMenuTypes()}
+                        {!loading && (
+              <ActivityIndicator
+                style={{ marginTop: 100 }}
+                color="#FF6C44"
+                size="large"
+              />
+            )}
+
                     </View>
                 }
                 renderItem={({item, index}) => {

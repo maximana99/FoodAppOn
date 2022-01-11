@@ -6,6 +6,8 @@ import {
     Image
 } from 'react-native';
 import { SIZES, COLORS, FONTS, icons} from "../constants";
+import { getFoodImage } from "../constants/foodImages";
+
 
 const HorizontalFoodCard = ({containerStyle, imageStyle, item, onPress}) => {
     return (
@@ -18,7 +20,7 @@ const HorizontalFoodCard = ({containerStyle, imageStyle, item, onPress}) => {
             }}
         >
             <Image
-                source={item.image}
+                source={getFoodImage(item.id)}
                 style={imageStyle}
             />
 
