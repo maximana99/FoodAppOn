@@ -6,6 +6,49 @@ import {
 } from "../../components"
 export function Login({navigation}) {
 
+    const scrollX = new Animated.Value(0)
+
+    const Dots = () => {
+        const dotPosition = Animated.divide(scrollX, SIZES.width)
+        return (
+            <View
+                style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}
+            >
+                {
+                    constants.onboarding_screens.map((item, index) => {
+                        const dotColor = dotPosition.interpolate({
+                            inputRange: [index - 1, index, index + 1],
+                            outputRange: [COLORS.lightOrange, COLORS.primary, COLORS.lightOrange],
+                            extrapolate: 'clamp'
+                        })
+                        const dotWidth = dotPosition.interpolate({
+                            inputRange: [index - 1, index, index + 1],
+                            outputRange: [10, 30, 10],
+                            extrapolate: 'clamp'
+                        })
+                        return (
+                            <Animated.View 
+                                key={`dot-${index}`}
+                                style={{
+                                    borderRadius: 5,
+                                    marginHorizontal: 6,
+                                    width: dotWidth,
+                                    height: 10,
+                                    backgroundColor: dotColor
+                                }}
+                            />
+                        )
+                    })
+                }
+
+            </View>
+        )
+    }
+
     function renderHeaderLogo() {
         return (
             <View
@@ -23,13 +66,37 @@ export function Login({navigation}) {
                     resizeMode="contain"
                     style={{
                         width: SIZES.width * 0.5,
-                        height: 100
+                        height: 101
                     }}
                 />
 
             </View>
         )
     }
+    function renderFooter() {
+        return (
+            <View
+                style={{
+                    height: 100
+                }}
+            >
+                {/* Pagination/ Dots  */}
+                <View
+                    style={{
+                        flex: 1,
+                        justifyContent: 'center'
+                    }}
+                >
+                    <Dots/>
+
+                </View>
+
+                {/* Bottons */}
+                
+            </View>
+        )
+    }
+
     return (
         // <View style={{
         //     marginTop: 300
@@ -66,6 +133,13 @@ export function Login({navigation}) {
                 scrollEventThrottle={16}
                 snapToAlignment="center"
                 showsHorizontalScrollIndicator={false}
+                onScroll={Animated.event(
+                    [
+                        { nativeEvent: { contentOffset: { x: scrollX }
+                    }}
+                    ],
+                    {useNativeDriver: false}
+                )}
                 keyExtractor={(item) => `${item.id}`}
                 renderItem={({ item, index}) => {
                     return (
@@ -135,6 +209,8 @@ export function Login({navigation}) {
                 }}
             
             />
+
+          {renderFooter()}
 
         </View>
         
