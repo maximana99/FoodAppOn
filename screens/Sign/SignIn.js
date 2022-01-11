@@ -3,8 +3,10 @@ import { Text, View, TouchableOpacity, ImageBackground, Image, Animated } from "
 import { SIZES, COLORS, FONTS, icons, constants, images} from "../../constants";
 import {
     IconButton,
-    TextButton
-} from "../../components"
+    TextButton,
+    FormInput
+} from "../../components";
+
 
 import { AuthLayout } from '../';
 //{navigation}
