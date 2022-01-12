@@ -129,6 +129,51 @@ const SignUp = ({navigation}) => {
                     }
                 />
                 {/* Sign up & Sign In */}
+                <TextButton 
+                    label="Sign Up"
+                    buttonContainerStyle={{
+                        height: 55,
+                        alignItems: 'center',
+                        marginTop: SIZES.padding,
+                        borderRadius: SIZES.radius,
+                        backgroudColor: COLORS.primary
+                    }}
+                    onPress={() => navigation.navigate("Layout")}
+                />
+
+                <View
+                    style={{
+                        flexDirection: 'row',
+                        marginTop: SIZES.radius,
+                        justifyContent: 'center'
+                    }}
+                >
+                    <Text
+                        style={{
+                            color: COLORS.darkGray,
+                            ...FONTS.body3
+                        }}
+                    >
+                        Already have an account?
+                    </Text>
+                    <TextButton 
+                        label="SignIn"
+                        buttonContainerStyle={{
+                            marginLeft: 3,
+                            backgroudColor: COLORS.white,
+                            borderRadius: SIZES.radius,
+                            height: 30,
+                            width: 100,
+                        }}
+                        labelStyle={{
+                            color: COLORS.white,
+                            ...FONTS.h3
+                        }}
+                        
+                        onPress={() => navigation.navigate("SignIn")}
+                    />
+                    </View>
+
             </View>
             {/* Footer */}
         </AuthLayout>
