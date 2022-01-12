@@ -8,7 +8,7 @@ import {
     Platform
 } from 'react-native';
 
-import MapView, {} from "react-native-maps";
+import MapView, {PROVIDER_GOOGLE, Marker} from "react-native-maps";
 
 const Map = ({ navigation }) => {
 
