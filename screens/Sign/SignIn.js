@@ -73,7 +73,7 @@ const SignIn = ({navigation}) => {
                                 style={{
                                     height:20,
                                     width: 20,
-                                    tintColor: email == "" ? COLORS.green : (email != "" && emailError == "") ? COLORS.green : COLORS.red
+                                    tintColor: email == "" ? COLORS.gray : (email != "" && emailError == "") ? COLORS.green : COLORS.red
                                 }}
                             />
 
