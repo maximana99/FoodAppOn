@@ -10,12 +10,16 @@ import { utils } from "../../utils";
 
 import { AuthLayout } from '../';
 //{navigation}
-const SignIn = () => {
+const SignIn = ({navigation}) => {
     const [email, setEmail] = React.useState("")
     const [password, setPassword] = React.useState("")
     const [emailError, setEmailError] = React.useState("")
 
     const [showPass, setShowPass] = React.useState(false)
+
+    function isEnableSignIn() {
+        return email != "" && password != "" && emailError == ""
+    }
     return (
         // <View style={{
         //         marginTop: 100
@@ -105,11 +109,54 @@ const SignIn = () => {
                     }
                 />
 
-                {/* Save me & Forgot password */}
-
                 {/* Sigh in  */}
+                <TextButton 
+                    label="Sign In"
+                    disabled={isEnableSignIn() ? false : true}
+                    buttonContainerStyle={{
+                        height: 55,
+                        alignItems: 'center',
+                        marginTop: SIZES.padding,
+                        borderRadius: SIZES.radius,
+                        backgroudColor: isEnableSignIn() ? COLORS.primary : COLORS.transparentPrimary
+                    }}
+                />
 
                 {/* Sign up */}
+                <View
+                    style={{
+                        flexDirection: 'row',
+                        marginTop: SIZES.radius,
+                        justifyContent: 'center'
+                    }}
+                >
+                    <Text
+                        style={{
+                            color: COLORS.darkGray,
+                            ...FONTS.body3
+                        }}
+                    >
+                        Don't have an account?
+                    </Text>
+                    <TextButton 
+                        label="SignUp"
+                        buttonContainerStyle={{
+                            marginLeft: 3,
+                            backgroudColor: COLORS.white,
+                            borderRadius: SIZES.radius,
+                            height: 30,
+                            width: 100,
+                        }}
+                        labelStyle={{
+                            color: COLORS.white,
+                            ...FONTS.h3
+                        }}
+                        
+                        onPress={() => navigation.navigate("SignUp")}
+                    />
+
+
+                </View>
 
             </View>
                

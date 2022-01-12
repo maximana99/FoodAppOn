@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import rootReducer from './stores/rootReducer';
 import { SignIn } from './screens';
+import { SignUp } from './screens';
 
 
 
@@ -44,6 +45,10 @@ const App = () =>{
         <Stack.Screen
             name="SignIn"
             component={SignIn}
+        />
+         <Stack.Screen
+            name="SignUp"
+            component={SignUp}
         />
       </Stack.Navigator>
     </NavigationContainer>
