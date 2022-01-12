@@ -24,6 +24,8 @@ import AuthLayout from "./Sign/AuthLayout";
 
 import SignUp from "./Sign/SignUp";
 
+import MyCart from "./Card/MyCart";
+
 export {
     MainLayout,
     Home,
@@ -35,6 +37,7 @@ export {
     Login,
     AuthLayout,
     SignIn,
-    SignUp
+    SignUp,
+    MyCart
     
 }

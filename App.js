@@ -10,7 +10,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import rootReducer from './stores/rootReducer';
-import { SignIn } from './screens';
+import { CartTab, MyCart, SignIn } from './screens';
 import { SignUp } from './screens';
 
 
@@ -50,6 +50,15 @@ const App = () =>{
             name="SignUp"
             component={SignUp}
         />
+        <Stack.Screen
+            name="MyCart"
+            component={MyCart}
+        />
+        <Stack.Screen
+            name="CartTab"
+            component={CartTab}
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
     </Provider>

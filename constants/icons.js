@@ -3,6 +3,7 @@ const cross = require("../assets/icons/cross.png")
 const cancel = require("../assets/icons/cancel.png")
 const cart = require("../assets/icons/cart.png")
 const menu = require("../assets/icons/menu.png")
+const minus = require("../assets/icons/minus.png")
 const search = require("../assets/icons/search.png")
 const filter = require("../assets/icons/filter.png")
 const down_arrow = require("../assets/icons/down_arrow.png")
@@ -26,6 +27,7 @@ const setting = require("../assets/icons/setting.png")
 const star = require("../assets/icons/star.png")
 const wallet = require("../assets/icons/wallet.png")
 const help = require("../assets/icons/help.png")
+const plus = require("../assets/icons/plus.png")
 
 export default {
     coupon,
@@ -33,6 +35,7 @@ export default {
     cancel,
     cart,
     menu,
+    minus,
     search,
     filter,
     down_arrow,
@@ -56,4 +59,5 @@ export default {
     star,
     wallet,
     help,
+    plus,
 }

@@ -4,6 +4,8 @@ import IconButton from "./IconButton";
 import TwoPointSlider from "./TwoPointSlider";
 import TextButton from "./TextButton";
 import FormInput from "./FormInput";
+import CartQuantityButton from "./CartQuantityButton";
+import StepperInput from "./StepperInput";
 
 export {
     Header,
@@ -11,5 +13,7 @@ export {
     IconButton,
     TwoPointSlider,
     FormInput, 
-    TextButton
+    TextButton,
+    CartQuantityButton,
+    StepperInput
 }

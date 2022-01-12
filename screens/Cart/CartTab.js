@@ -1,21 +1,41 @@
 import React from 'react';
 import {
     View,
-    Text
-} from 'react-native';
+    Text,
+    Image,
+    StyleSheet
 
-const CartTab = () => {
+} from 'react-native';
+import { Header, IconButton, CartQuantityButton, StepperInput } from '../../components';
+import { SIZES, COLORS, FONTS, icons, constants, images} from "../../constants";
+
+const CartTab = ({navigation}) => {
+
+    function renderHeader() {
+        <Header 
+            title="MY SHOP CART"
+            containerStyle={{
+                height: 50,
+                marginHorizontal: SIZES.padding,
+                marginTop: 100
+            }}
+        />
+    }
+
     return (
         <View
             style={{
                 flex: 1,
-                alignItems: 'center',
-                justifyContent: 'center'
+                backgroundColor: COLORS.white
             }}
         >
-            <Text>Caart</Text>
+            {/* HEADER  */}
+            {renderHeader()}
+            {/* CART LIST */}
+
+            {/* FOOTER */}
         </View>
     )
 }
 
-export default CartTab
+export default CartTab;

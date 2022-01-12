@@ -112,14 +112,15 @@ const SignIn = ({navigation}) => {
                 {/* Sigh in  */}
                 <TextButton 
                     label="Sign In"
-                    disabled={isEnableSignIn() ? false : true}
+                    //disabled={isEnableSignIn() ? false : true}
                     buttonContainerStyle={{
                         height: 55,
                         alignItems: 'center',
                         marginTop: SIZES.padding,
                         borderRadius: SIZES.radius,
-                        backgroudColor: isEnableSignIn() ? COLORS.primary : COLORS.transparentPrimary
+                        backgroudColor: COLORS.primary
                     }}
+                    onPress={() => navigation.navigate("MyCart")}
                 />
 
                 {/* Sign up */}
