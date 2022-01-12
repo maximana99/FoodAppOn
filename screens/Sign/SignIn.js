@@ -120,7 +120,7 @@ const SignIn = ({navigation}) => {
                         borderRadius: SIZES.radius,
                         backgroudColor: COLORS.primary
                     }}
-                    onPress={() => navigation.navigate("MyCart")}
+                    onPress={() => navigation.navigate("Map")}
                 />
 
                 {/* Sign up */}

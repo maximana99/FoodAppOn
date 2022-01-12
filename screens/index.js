@@ -26,6 +26,8 @@ import SignUp from "./Sign/SignUp";
 
 import MyCart from "./Card/MyCart";
 
+import Map from "./Delivery/Map";
+
 export {
     MainLayout,
     Home,
@@ -38,6 +40,7 @@ export {
     AuthLayout,
     SignIn,
     SignUp,
-    MyCart
+    MyCart, 
+    Map
     
 }
