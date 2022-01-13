@@ -11,20 +11,23 @@ import {
 
 import MapView, {PROVIDER_GOOGLE, Marker} from "react-native-maps";
 import { COLORS, SIZES } from '../../constants';
+import { useCoordonateContext } from '../../context/useCoordonateContext';
 
 const Map = ({ navigation }) => {
 
+        const {latitude1, longitude1, latitude2, longitude2} = useCoordonateContext();
+ 
     
         const initialRegion = {
-            latitude: 1.5496614931250685,
-            longitude: 110.36381866919922,
+            latitude: latitude1,
+            longitude: longitude1,
             latitudeDelta: 0.02,
             longitudeDelta: 0.02
         }
 
         const destination = {
-            latitude: 1.5496614931250685,
-            longitude: 110.36381866919922,
+            latitude: latitude2,
+            longitude: longitude2,
         }
     
 
@@ -50,6 +53,7 @@ const Map = ({ navigation }) => {
           zoomEnabled
           mapType="mutedStandard"
         >
+          <Marker coordinate={initialRegion} />
           <Marker coordinate={destination} />
         </MapView>
         <View

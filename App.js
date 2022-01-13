@@ -13,7 +13,7 @@ import rootReducer from './stores/rootReducer';
 import { CartTab, MyCart, SignIn, Map } from './screens';
 import { SignUp } from './screens';
 
-
+import { CoordonateProvider } from './context/CoordonateProvider';
 const Stack = createStackNavigator();
 
 const store = createStore(
@@ -24,6 +24,7 @@ const store = createStore(
 const App = () =>{
   return (
     <Provider store={store}>
+    <CoordonateProvider>
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
@@ -64,6 +65,7 @@ const App = () =>{
 
       </Stack.Navigator>
     </NavigationContainer>
+    </CoordonateProvider> 
     </Provider>
   )
 }

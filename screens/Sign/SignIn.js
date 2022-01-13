@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, View, TouchableOpacity, ImageBackground, Image, Animated } from "react-native";
 import { SIZES, COLORS, FONTS, icons, constants, images} from "../../constants";
 import {
@@ -7,6 +7,7 @@ import {
     FormInput
 } from "../../components";
 import { utils } from "../../utils";
+import { useCoordonateContext } from '../../context/useCoordonateContext';
 
 import { AuthLayout } from '../';
 //{navigation}
@@ -17,8 +18,37 @@ const SignIn = ({navigation}) => {
 
     const [showPass, setShowPass] = React.useState(false)
 
+    const {setLatitude1, setLongitude1, setLatitude2, setLongitude2} = useCoordonateContext();
+    const [clientFirebase, setClientFirebase] = useState([]);
+    useEffect(() => {
+        async function getClients() {
+            const response = await fetch("https://foodappon-default-rtdb.firebaseio.com/clients.json");
+            const data = await response.json();
+            let clients = [];
+            for(const client in data) {
+                clients.push({
+                    email: data[client].email,
+                    parola: data[client].parola,
+                    latitudine1: data[client].latitudine1,
+                    latitudine2: data[client].latitudine2,
+                    longitudine1: data[client].longitudine1,
+                    longitudine2: data[client].longitudine2
+                })
+            }
+            setClientFirebase(clients);
+        
+        }
+        getClients();
+    }, [])
+
     function isEnableSignIn() {
         return email != "" && password != "" && emailError == ""
+    }
+    
+    function checkCredentials(client) {
+        return (
+            email === client.email && password === client.parola
+        )
     }
     return (
         // <View style={{
@@ -120,7 +150,17 @@ const SignIn = ({navigation}) => {
                         borderRadius: SIZES.radius,
                         backgroudColor: COLORS.primary
                     }}
-                    onPress={() => navigation.navigate("Map")}
+                    onPress={() => {
+                        const currentUser = clientFirebase.filter(checkCredentials)[0];
+                        if (currentUser !== undefined) {
+                            setLatitude1(currentUser.latitudine1);
+                            setLongitude1(currentUser.longitudine1);
+                            setLatitude2(currentUser.latitudine2);
+                            setLongitude2(currentUser.longitudine2);
+                            navigation.navigate("Map");
+                        }
+                        
+                       }}
                 />
 
                 {/* Sign up */}
