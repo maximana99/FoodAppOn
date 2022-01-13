@@ -77,7 +77,7 @@ const Map = ({ navigation }) => {
                     left: 150,
                     borderRadius: SIZES.radius
                 }}
-                onPress={() => navigation.navigate("SignIn")}
+                onPress={() => navigation.navigate("MyCart")}
                 
             >
                 <Text

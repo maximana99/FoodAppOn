@@ -83,7 +83,7 @@ const MyCart = ({navigation}) => {
                     borderRadius: SIZES.radius,
                     backgroudColor: COLORS.primary
                 }}
-                onPress={() => navigation.navigate("Map")}
+                onPress={() => navigation.navigate("Layout")}
             />
 
         <TextButton 
