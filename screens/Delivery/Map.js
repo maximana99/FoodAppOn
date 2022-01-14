@@ -85,7 +85,7 @@ const Map = ({ navigation }) => {
                         textAlign:'center',
                         marginTop: 5
                     }}
-                >Back</Text>
+                >Next</Text>
             </TouchableOpacity>
         </View>
 
