@@ -292,7 +292,7 @@ const MainLayout = ({drawerAnimationStyle, navigation, selectedTab, setSelectedT
                         }}
                     >
                         <Image
-                            source={dummyData?.myProfile?.profile_image}
+                          
                             style={{
                                 width: 40,
                                 height: 40,
